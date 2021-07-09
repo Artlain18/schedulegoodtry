@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://creditOfferBrowse.caption"
+        focusComponent="creditOffersTable"
+        messagesPack="com.company.schedulegoodtry.web.screens.creditoffer">
+    <data readOnly="true">
+        <collection id="creditOffersDc"
+                    class="com.company.schedulegoodtry.entity.CreditOffer">
+            <view extends="_local">
+                <property name="client" view="_minimal"/>
+                <property name="credit" view="_minimal"/>
+                <property name="listPayment" view="_minimal">
+                    <property name="sumCreditPayment"/>
+                    <property name="sumPercentPayment"/>
+                </property>
+            </view>
+            <loader id="creditOffersDl">
+                <query>
+                    <![CDATA[select e from schedulegoodtry_CreditOffer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="creditOffersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="creditOffersTable"
+                dataLoader="creditOffersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="creditOffersTable"
+                    width="100%"
+                    dataContainer="creditOffersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="client"/>
+                <column id="credit"/>
+                <column id="sumCredit"/>
+                <column id="startDate"/>
+                <column id="periodCredit"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="creditOffersTable.create"/>
+                <button id="editBtn" action="creditOffersTable.edit"/>
+                <button id="removeBtn" action="creditOffersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

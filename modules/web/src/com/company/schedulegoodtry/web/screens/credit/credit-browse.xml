@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://creditBrowse.caption"
+        focusComponent="creditsTable"
+        messagesPack="com.company.schedulegoodtry.web.screens.credit">
+    <data readOnly="true">
+        <collection id="creditsDc"
+                    class="com.company.schedulegoodtry.entity.Credit">
+            <view extends="_local">
+                <property name="bank" view="_minimal"/>
+            </view>
+            <loader id="creditsDl">
+                <query>
+                    <![CDATA[select e from schedulegoodtry_Credit e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="creditsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="creditsTable"
+                dataLoader="creditsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="creditsTable"
+                    width="100%"
+                    dataContainer="creditsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="nameCredit"/>
+                <column id="limitCredit"/>
+                <column id="percentCredit"/>
+                <column id="bank"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="creditsTable.create"/>
+                <button id="editBtn" action="creditsTable.edit"/>
+                <button id="removeBtn" action="creditsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://bankBrowse.caption"
+        focusComponent="banksTable"
+        messagesPack="com.company.schedulegoodtry.web.screens.bank">
+    <data readOnly="true">
+        <collection id="banksDc"
+                    class="com.company.schedulegoodtry.entity.Bank">
+            <view extends="_local">
+                <property name="clientList" view="_minimal"/>
+                <property name="listCredit" view="_minimal"/>
+            </view>
+            <loader id="banksDl">
+                <query>
+                    <![CDATA[select e from schedulegoodtry_Bank e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="banksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="banksTable"
+                dataLoader="banksDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="banksTable"
+                    width="100%"
+                    dataContainer="banksDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="clientList"/>
+                <column id="listCredit"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="banksTable.create"/>
+                <button id="editBtn" action="banksTable.edit"/>
+                <button id="removeBtn" action="banksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

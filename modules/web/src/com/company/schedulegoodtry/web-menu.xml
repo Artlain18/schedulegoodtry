@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-schedulegoodtry" insertBefore="administration" caption="mainMsg://menu_config.application-schedulegoodtry">
+        <item screen="schedulegoodtry_Bank.browse" caption="mainMsg://menu_config.schedulegoodtry_Bank.browse"/>
+        <item screen="schedulegoodtry_Client.browse" caption="mainMsg://menu_config.schedulegoodtry_Client.browse"/>
+        <item screen="schedulegoodtry_Credit.browse" caption="mainMsg://menu_config.schedulegoodtry_Credit.browse"/>
+        <item screen="schedulegoodtry_Payment.browse" caption="mainMsg://menu_config.schedulegoodtry_Payment.browse"/>
+        <item screen="schedulegoodtry_CreditOffer.browse"
+              caption="mainMsg://menu_config.schedulegoodtry_CreditOffer.browse"/>
     </menu>
 </menu-config>
