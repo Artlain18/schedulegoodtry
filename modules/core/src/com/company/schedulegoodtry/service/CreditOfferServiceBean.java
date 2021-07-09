@@ -37,19 +37,17 @@ public class CreditOfferServiceBean implements CreditOfferService {
 
         List<Payment> curPaymentList = new ArrayList<>();
         for (int j = 0; j < creditOffer.getPeriodCredit(); j++) {
-            creditOffer.getListPayment().add(setPayment);
-            balanceCredit = balanceCredit - s;
-            h = balanceCredit * i;
-            curSumPercentPayment = convertToBigDec(h);
-            curSumCreditPayment = convertToBigDec(curSumPayment.doubleValue() - curSumPercentPayment.doubleValue());
-            setPayment.setSumPercentPayment(curSumPercentPayment);
-            setPayment.setSumCreditPayment(curSumCreditPayment);
-            setPayment.setDatePayment(curDate.plusDays(30));
+            Payment curPayment = paymentService.createPayment(curDate, curSumPayment, curSumCreditPayment, curSumPercentPayment);
+            curPaymentList.add(curPayment);
+            balanceCredit = balanceCredit.subtract(curPayment.getSumCreditPayment());
+            curSumPercentPayment = balanceCredit.multiply(i);
+            curSumCreditPayment = curPayment.getSumPayment().subtract(curSumPercentPayment);
+            curPayment.setSumPercentPayment(curSumPercentPayment);
+            curPayment.setSumCreditPayment(curSumCreditPayment);
+            curPayment.setDatePayment(curDate.plusDays(30));
         }
+        creditOffer.setListPayment(curPaymentList);
+
         return creditOffer;
-    }
-    public BigDecimal convertToBigDec(Double a) {
-        BigDecimal b = new BigDecimal(a, MathContext.DECIMAL64);
-        return b;
     }
 }
