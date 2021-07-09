@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -20,14 +21,17 @@ public class Payment extends StandardEntity {
 
     @NotNull
     @Column(name = "SUM_PAYMENT", nullable = false)
+    @Positive
     private BigDecimal sumPayment;
 
     @NotNull
     @Column(name = "SUM_CREDIT_PAYMENT", nullable = false)
+    @Positive
     private BigDecimal sumCreditPayment;
 
     @NotNull
     @Column(name = "SUM_PERCENT_PAYMENT", nullable = false)
+    @Positive
     private BigDecimal sumPercentPayment;
 
     @ManyToOne(fetch = FetchType.LAZY)

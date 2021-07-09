@@ -35,6 +35,7 @@ public class CreditOffer extends StandardEntity {
 
     @NotNull
     @Column(name = "SUM_CREDIT", nullable = false)
+    @Positive
     private BigDecimal sumCredit;
 
     @NotNull
