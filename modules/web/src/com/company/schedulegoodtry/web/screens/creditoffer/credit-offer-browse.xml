@@ -53,6 +53,7 @@
                 <button id="createBtn" action="creditOffersTable.create"/>
                 <button id="editBtn" action="creditOffersTable.edit"/>
                 <button id="removeBtn" action="creditOffersTable.remove"/>
+                <button id="scheduleBtn" caption="Create schedule of payments" visible="false"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

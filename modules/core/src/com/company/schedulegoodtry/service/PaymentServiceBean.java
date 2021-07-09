@@ -11,8 +11,12 @@ import java.time.LocalDateTime;
 @Service(PaymentService.NAME)
 public class PaymentServiceBean implements PaymentService {
 
-    @Inject
-    private DataManager dataManager;
+
+    private final DataManager dataManager;
+
+    PaymentServiceBean(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
 
     @Override
     public Payment createPayment(LocalDateTime setTime, BigDecimal setSumPayment, BigDecimal setSumCreditPayment, BigDecimal setSumPercentPayment) {
