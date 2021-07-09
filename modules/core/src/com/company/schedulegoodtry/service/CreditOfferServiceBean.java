@@ -2,6 +2,7 @@ package com.company.schedulegoodtry.service;
 
 import com.company.schedulegoodtry.entity.CreditOffer;
 import com.company.schedulegoodtry.entity.Payment;
+import com.haulmont.cuba.core.global.DataManager;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -14,11 +15,20 @@ import java.util.List;
 @Service(CreditOfferService.NAME)
 public class CreditOfferServiceBean implements CreditOfferService {
 
+    private final DataManager dataManager;
+    private final PaymentService paymentService;
+
     @Inject
-    private PaymentService paymentService;
+    CreditOfferServiceBean(
+            PaymentService paymentService,
+            DataManager dataManager
+    ) {
+        this.paymentService = paymentService;
+        this.dataManager = dataManager;
+    }
 
     @Override
-    public CreditOffer createSchedulePayments(CreditOffer creditOffer) {
+    public void calculateSchedulePayments(CreditOffer creditOffer) {
         LocalDateTime curDate = creditOffer.getStartDate();
 
         BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(BigDecimal.valueOf(1200), MathContext.DECIMAL128);
@@ -45,9 +55,9 @@ public class CreditOfferServiceBean implements CreditOfferService {
             curPayment.setSumPercentPayment(curSumPercentPayment);
             curPayment.setSumCreditPayment(curSumCreditPayment);
             curPayment.setDatePayment(curDate.plusDays(30));
+            curPayment.setCreditOffer(creditOffer);
         }
         creditOffer.setListPayment(curPaymentList);
-
-        return creditOffer;
+        dataManager.commit(creditOffer);
     }
 }
