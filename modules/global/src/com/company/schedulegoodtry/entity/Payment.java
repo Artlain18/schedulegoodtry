@@ -38,6 +38,16 @@ public class Payment extends StandardEntity {
     @JoinColumn(name = "CREDIT_OFFER_ID")
     private CreditOffer creditOffer;
 
+    public Payment() {
+
+    }
+    public Payment(LocalDateTime setTime, BigDecimal setSumPayment, BigDecimal setSumCreditPayment, BigDecimal setSumPercentPayment) {
+        this.sumPayment = setSumPayment;
+        this.sumCreditPayment = setSumCreditPayment;
+        this.sumPercentPayment = setSumPercentPayment;
+        this.datePayment = setTime;
+    }
+
     public CreditOffer getCreditOffer() {
         return creditOffer;
     }
