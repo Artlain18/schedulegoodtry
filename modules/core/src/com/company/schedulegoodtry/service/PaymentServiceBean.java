@@ -4,15 +4,16 @@ import com.company.schedulegoodtry.entity.Payment;
 import com.haulmont.cuba.core.global.DataManager;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service(PaymentService.NAME)
 public class PaymentServiceBean implements PaymentService {
 
-
     private final DataManager dataManager;
 
+    @Inject
     PaymentServiceBean(DataManager dataManager) {
         this.dataManager = dataManager;
     }
