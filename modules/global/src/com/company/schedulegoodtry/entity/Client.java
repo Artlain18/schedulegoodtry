@@ -6,6 +6,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Table(name = "SCHEDULEGOODTRY_CLIENT")
@@ -20,7 +21,8 @@ public class Client extends StandardEntity {
 
     @NotNull
     @Column(name = "PHONE_NUMBER", nullable = false, unique = true)
-    @Size(min = 11, max = 11)
+    @Size(min = 11, max = 12)
+    @Pattern(regexp = "((\\+7)|8)\\d{10}")
     private String phoneNumber;
 
     @NotNull

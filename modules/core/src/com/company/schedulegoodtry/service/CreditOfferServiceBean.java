@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service(CreditOfferService.NAME)
 public class CreditOfferServiceBean implements CreditOfferService {
@@ -19,16 +21,21 @@ public class CreditOfferServiceBean implements CreditOfferService {
     public CreditOffer createSchedulePayments(CreditOffer creditOffer) {
         LocalDateTime curDate = creditOffer.getStartDate();
 
-        Double i = creditOffer.getCredit().getPercentCredit() / 1200;
-        Double p = creditOffer.getSumCredit().doubleValue() * (i + i / (Math.pow(1 + i, creditOffer.getPeriodCredit()) - 1));
-        BigDecimal curSumPayment = convertToBigDec(p);//постоянная сумма платежа
-        Double balanceCredit = creditOffer.getSumCredit().doubleValue();
-        Double h = balanceCredit * i; //погашение процента
-        Double s = curSumPayment.doubleValue() - h; // погашение кредита
-        BigDecimal curSumPercentPayment = convertToBigDec(h);
-        BigDecimal curSumCreditPayment = convertToBigDec(s);
+        BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(BigDecimal.valueOf(1200), MathContext.DECIMAL128);
+        BigDecimal curSumPayment = creditOffer.getSumCredit().multiply(i.add(i.divide(
+                (BigDecimal.valueOf(1).add(i)).pow(creditOffer.getPeriodCredit()).subtract(BigDecimal.valueOf(1)),
+                MathContext.DECIMAL128
+        )));
+        //BigDecimal curSumPayment = convertToBigDec(p);//постоянная сумма платежа
+        BigDecimal balanceCredit = creditOffer.getSumCredit();
+        BigDecimal curSumPercentPayment = balanceCredit.multiply(i); //погашение процента
 
-        Payment setPayment = paymentService.createPayment(curDate, curSumPayment, curSumCreditPayment, curSumPercentPayment);
+        BigDecimal curSumCreditPayment = curSumPayment.subtract(curSumPercentPayment); // погашение кредита
+        //BigDecimal curSumPercentPayment = convertToBigDec(h);
+        //BigDecimal curSumCreditPayment = convertToBigDec(s);
+
+
+        List<Payment> curPaymentList = new ArrayList<>();
         for (int j = 0; j < creditOffer.getPeriodCredit(); j++) {
             creditOffer.getListPayment().add(setPayment);
             balanceCredit = balanceCredit - s;
