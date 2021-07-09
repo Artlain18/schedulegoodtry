@@ -7,7 +7,9 @@
     <data readOnly="true">
         <collection id="paymentsDc"
                     class="com.company.schedulegoodtry.entity.Payment">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="creditOffer" view="_minimal"/>
+            </view>
             <loader id="paymentsDl">
                 <query>
                     <![CDATA[select e from schedulegoodtry_Payment e]]>
@@ -37,6 +39,7 @@
                 <column id="sumPayment"/>
                 <column id="sumCreditPayment"/>
                 <column id="sumPercentPayment"/>
+                <column id="creditOffer"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

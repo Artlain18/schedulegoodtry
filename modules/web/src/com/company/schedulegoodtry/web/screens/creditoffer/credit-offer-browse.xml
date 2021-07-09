@@ -45,6 +45,7 @@
                 <column id="sumCredit"/>
                 <column id="startDate"/>
                 <column id="periodCredit"/>
+                <column id="listPayment"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
