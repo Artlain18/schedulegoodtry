@@ -1,5 +1,6 @@
 package com.company.schedulegoodtry.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.validation.constraints.Size;
 
 @Table(name = "SCHEDULEGOODTRY_CLIENT")
 @Entity(name = "schedulegoodtry_Client")
+@NamePattern("%s %s|fullName,email")
 public class Client extends StandardEntity {
     private static final long serialVersionUID = 2967993644035618043L;
 

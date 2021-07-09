@@ -1,5 +1,6 @@
 package com.company.schedulegoodtry.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 
 @Table(name = "SCHEDULEGOODTRY_CREDIT")
 @Entity(name = "schedulegoodtry_Credit")
+@NamePattern("%s %s %s|nameCredit,limitCredit,percentCredit")
 public class Credit extends StandardEntity {
     private static final long serialVersionUID = 5099654559911535654L;
 

@@ -1,5 +1,6 @@
 package com.company.schedulegoodtry.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Table(name = "SCHEDULEGOODTRY_PAYMENT")
 @Entity(name = "schedulegoodtry_Payment")
+@NamePattern("%s %s|sumPayment,datePayment")
 public class Payment extends StandardEntity {
     private static final long serialVersionUID = -9179147032951807207L;
 
@@ -27,6 +29,7 @@ public class Payment extends StandardEntity {
     @NotNull
     @Column(name = "SUM_PERCENT_PAYMENT", nullable = false)
     private BigDecimal sumPercentPayment;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CREDIT_OFFER_ID")
     private CreditOffer creditOffer;

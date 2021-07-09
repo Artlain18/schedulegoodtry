@@ -1,5 +1,6 @@
 package com.company.schedulegoodtry.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Table(name = "SCHEDULEGOODTRY_CREDIT_OFFER")
 @Entity(name = "schedulegoodtry_CreditOffer")
+@NamePattern("%s %s %s %s %s %s|client,credit,sumCredit,periodCredit,startDate,listPayment")
 public class CreditOffer extends StandardEntity {
     private static final long serialVersionUID = -2100148096608285827L;
 
