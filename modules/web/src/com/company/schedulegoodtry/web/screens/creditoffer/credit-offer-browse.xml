@@ -45,7 +45,7 @@
                 <column id="sumCredit"/>
                 <column id="startDate"/>
                 <column id="periodCredit"/>
-                <column id="listPayment"/>
+                <column id="listPayment" sort="ASCENDING"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

@@ -23,7 +23,7 @@ public class PaymentServiceBean implements PaymentService {
         Payment payment = dataManager.create(Payment.class);
         payment.setDatePayment(setTime);
         payment.setSumPayment(setSumPayment);
-        payment.setSumCreditPayment(setSumPercentPayment);
+        payment.setSumPercentPayment(setSumPercentPayment);
         payment.setSumCreditPayment(setSumCreditPayment);
 
         return payment;

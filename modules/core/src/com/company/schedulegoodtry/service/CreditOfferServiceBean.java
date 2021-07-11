@@ -46,17 +46,22 @@ public class CreditOfferServiceBean implements CreditOfferService {
 
 
         List<Payment> curPaymentList = new ArrayList<>();
-        for (int j = 0; j < creditOffer.getPeriodCredit(); j++) {
+        Payment firstPayment = paymentService.createPayment(curDate, curSumPayment, curSumCreditPayment, curSumPercentPayment);
+        curPaymentList.add(firstPayment);
+        for (int j = 1; j < creditOffer.getPeriodCredit(); j++) {
             Payment curPayment = paymentService.createPayment(curDate, curSumPayment, curSumCreditPayment, curSumPercentPayment);
-            curPaymentList.add(curPayment);
             balanceCredit = balanceCredit.subtract(curPayment.getSumCreditPayment());
             curSumPercentPayment = balanceCredit.multiply(i);
             curSumCreditPayment = curPayment.getSumPayment().subtract(curSumPercentPayment);
+            curDate = curDate.plusDays(30);
             curPayment.setSumPercentPayment(curSumPercentPayment);
             curPayment.setSumCreditPayment(curSumCreditPayment);
-            curPayment.setDatePayment(curDate.plusDays(30));
+            curPayment.setDatePayment(curDate);
             curPayment.setCreditOffer(creditOffer);
+
+            curPaymentList.add(curPayment);
         }
+
         creditOffer.setListPayment(curPaymentList);
         dataManager.commit(creditOffer);
     }

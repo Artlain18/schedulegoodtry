@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Table(name = "SCHEDULEGOODTRY_PAYMENT")
 @Entity(name = "schedulegoodtry_Payment")
-@NamePattern("%s %s %s %s|sumPayment,datePayment,sumCreditPayment,sumPercentPayment")
+@NamePattern("%s %s %s %s|datePayment,sumPayment,sumCreditPayment,sumPercentPayment")
 public class Payment extends StandardEntity {
     private static final long serialVersionUID = -9179147032951807207L;
 
