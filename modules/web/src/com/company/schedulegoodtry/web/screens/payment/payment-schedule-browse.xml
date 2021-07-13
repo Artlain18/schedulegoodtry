@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://paymentBrowse.caption"
+        caption="msg://paymentScheduleBrowse.caption"
         focusComponent="paymentsTable"
         messagesPack="com.company.schedulegoodtry.web.screens.payment">
     <data readOnly="true">
         <collection id="paymentsDc"
                     class="com.company.schedulegoodtry.entity.Payment">
-            <view extends="_local">
-                <property name="creditOffer" view="_minimal"/>
-            </view>
+            <view extends="_minimal"/>
             <loader id="paymentsDl">
                 <query>
                     <![CDATA[select e from schedulegoodtry_Payment e]]>
@@ -25,34 +23,21 @@
                 dataLoader="paymentsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="paymentsTable"
-                    width="100%"
-                    dataContainer="paymentsDc">
+        <table id="paymentsTable"
+               width="100%"
+               dataContainer="paymentsDc">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <group>
-                    <column id="datePayment"/>
-                </group>
+                <column id="datePayment"/>
                 <column id="sumPayment"/>
                 <column id="sumCreditPayment"/>
                 <column id="sumPercentPayment"/>
-                <column id="creditOffer"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="paymentsTable.create"/>
-                <button id="editBtn" action="paymentsTable.edit"/>
-                <button id="removeBtn" action="paymentsTable.remove"/>
             </buttonsPanel>
-        </groupTable>
-        <hbox id="lookupActions" spacing="true" visible="false">
-            <button action="lookupSelectAction"/>
-            <button action="lookupCancelAction"/>
-        </hbox>
+        </table>
     </layout>
 </window>

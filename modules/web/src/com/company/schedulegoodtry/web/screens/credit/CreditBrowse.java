@@ -1,7 +1,7 @@
 package com.company.schedulegoodtry.web.screens.credit;
 
-import com.haulmont.cuba.gui.screen.*;
 import com.company.schedulegoodtry.entity.Credit;
+import com.haulmont.cuba.gui.screen.*;
 
 @UiController("schedulegoodtry_Credit.browse")
 @UiDescriptor("credit-browse.xml")

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://creditOfferBrowse.caption"
         focusComponent="creditOffersTable"
         messagesPack="com.company.schedulegoodtry.web.screens.creditoffer">
@@ -24,38 +23,41 @@
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="creditOffersTable"
+    <layout expand="creditOfferTabSheet"
             spacing="true">
         <filter id="filter"
                 applyTo="creditOffersTable"
                 dataLoader="creditOffersDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="creditOffersTable"
-                    width="100%"
-                    dataContainer="creditOffersDc">
-            <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
-            </actions>
-            <columns>
-                <column id="client"/>
-                <column id="credit"/>
-                <column id="sumCredit"/>
-                <column id="startDate"/>
-                <column id="periodCredit"/>
-                <column id="listPayment" sort="ASCENDING"/>
-            </columns>
-            <rowsCount/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
-                <button id="createBtn" action="creditOffersTable.create"/>
-                <button id="editBtn" action="creditOffersTable.edit"/>
-                <button id="removeBtn" action="creditOffersTable.remove"/>
-                <button id="scheduleBtn" caption="Create schedule of payments" visible="false"/>
-            </buttonsPanel>
-        </groupTable>
+        <tabSheet id="creditOfferTabSheet">
+            <tab id="creditOfferTab" caption="msg://creditOfferTab.caption" expand="creditOffersTable">
+                <groupTable id="creditOffersTable"
+                            width="100%"
+                            dataContainer="creditOffersDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="client"/>
+                        <column id="credit"/>
+                        <column id="sumCredit"/>
+                        <column id="startDate"/>
+                        <column id="periodCredit"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="creditOffersTable.create"/>
+                        <button id="editBtn" action="creditOffersTable.edit"/>
+                        <button id="removeBtn" action="creditOffersTable.remove"/>
+                        <button id="checkScheduleBtn" caption="msg://checkScheduleBtn.caption" visible="false"/>
+                    </buttonsPanel>
+                </groupTable>
+            </tab>
+        </tabSheet>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

@@ -30,21 +30,14 @@ public class CreditOfferServiceBean implements CreditOfferService {
     @Override
     public void calculateSchedulePayments(CreditOffer creditOffer) {
         LocalDateTime curDate = creditOffer.getStartDate();
-
         BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(BigDecimal.valueOf(1200), MathContext.DECIMAL128);
         BigDecimal curSumPayment = creditOffer.getSumCredit().multiply(i.add(i.divide(
                 (BigDecimal.valueOf(1).add(i)).pow(creditOffer.getPeriodCredit()).subtract(BigDecimal.valueOf(1)),
                 MathContext.DECIMAL128
         )));
-        //BigDecimal curSumPayment = convertToBigDec(p);//постоянная сумма платежа
         BigDecimal balanceCredit = creditOffer.getSumCredit();
         BigDecimal curSumPercentPayment = balanceCredit.multiply(i); //погашение процента
-
         BigDecimal curSumCreditPayment = curSumPayment.subtract(curSumPercentPayment); // погашение кредита
-        //BigDecimal curSumPercentPayment = convertToBigDec(h);
-        //BigDecimal curSumCreditPayment = convertToBigDec(s);
-
-
         List<Payment> curPaymentList = new ArrayList<>();
         Payment firstPayment = paymentService.createPayment(curDate, curSumPayment, curSumCreditPayment, curSumPercentPayment);
         firstPayment.setCreditOffer(creditOffer);
@@ -59,12 +52,15 @@ public class CreditOfferServiceBean implements CreditOfferService {
             curPayment.setSumCreditPayment(curSumCreditPayment);
             curPayment.setDatePayment(curDate);
             curPayment.setCreditOffer(creditOffer);
-
             curPaymentList.add(curPayment);
         }
-
         creditOffer.setListPayment(curPaymentList);
         dataManager.commit(creditOffer);
+        return curPaymentList;
+    }
 
+    @Override
+    public List<Payment> watchSchedulePayments(CreditOffer creditOffer) {
+        return creditOffer.getListPayment();
     }
 }

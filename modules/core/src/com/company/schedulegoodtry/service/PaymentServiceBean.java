@@ -25,7 +25,6 @@ public class PaymentServiceBean implements PaymentService {
         payment.setSumPayment(setSumPayment);
         payment.setSumPercentPayment(setSumPercentPayment);
         payment.setSumCreditPayment(setSumCreditPayment);
-
         return payment;
     }
 }

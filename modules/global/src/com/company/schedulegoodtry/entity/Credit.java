@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
+import java.util.function.Function;
 
 @Table(name = "SCHEDULEGOODTRY_CREDIT")
 @Entity(name = "schedulegoodtry_Credit")
