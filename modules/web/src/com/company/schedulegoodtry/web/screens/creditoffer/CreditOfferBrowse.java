@@ -25,6 +25,7 @@ public class CreditOfferBrowse extends StandardLookup<CreditOffer> {
             //Table<CreditOffer> table = (Table<CreditOffer>) getWindow().getComponentNN("creditOffersTable");
             //table.refresh();
         }
+
     }
 
     @Subscribe("creditOffersTable")
