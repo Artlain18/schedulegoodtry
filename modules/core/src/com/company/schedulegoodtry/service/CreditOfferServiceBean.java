@@ -28,7 +28,7 @@ public class CreditOfferServiceBean implements CreditOfferService {
     }
 
     @Override
-    public void calculateSchedulePayments(CreditOffer creditOffer) {
+    public List<Payment> calculateSchedulePayments(CreditOffer creditOffer) {
         LocalDateTime curDate = creditOffer.getStartDate();
         BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(BigDecimal.valueOf(1200), MathContext.DECIMAL128);
         BigDecimal curSumPayment = creditOffer.getSumCredit().multiply(i.add(i.divide(

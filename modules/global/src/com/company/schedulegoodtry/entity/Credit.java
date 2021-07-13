@@ -64,4 +64,11 @@ public class Credit extends StandardEntity {
     public void setNameCredit(String nameCredit) {
         this.nameCredit = nameCredit;
     }
+
+    public static class PercentFormatter implements Function<Double, String> {
+        @Override
+        public String apply(Double percent) {
+            return String.valueOf(percent) + '%';
+        }
+    }
 }

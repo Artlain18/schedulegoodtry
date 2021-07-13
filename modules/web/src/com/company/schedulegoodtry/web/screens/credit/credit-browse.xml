@@ -37,7 +37,9 @@
             <columns>
                 <column id="nameCredit"/>
                 <column id="limitCredit"/>
-                <column id="percentCredit"/>
+                <column id="percentCredit">
+                    <formatter class="com.company.schedulegoodtry.entity.Credit$PercentFormatter"/>
+                </column>
                 <column id="bank"/>
             </columns>
             <rowsCount/>
