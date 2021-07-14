@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://clientBrowse.caption"
         focusComponent="clientsTable"
         messagesPack="com.company.schedulegoodtry.web.screens.client">
@@ -28,25 +27,25 @@
         </filter>
         <groupTable id="clientsTable"
                     width="100%"
-                    dataContainer="clientsDc">
+                    dataContainer="clientsDc" caption="msg://clientsTable.caption">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="fullName"/>
-                <column id="phoneNumber"/>
-                <column id="email"/>
-                <column id="passportNumber"/>
-                <column id="bank"/>
+                <column id="fullName" caption="msg://fullName.caption"/>
+                <column id="phoneNumber" caption="msg://phoneNumber.caption"/>
+                <column id="email" caption="msg://email.caption"/>
+                <column id="passportNumber" caption="msg://passportNumber.caption"/>
+                <column id="bank" caption="msg://bank.caption"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="clientsTable.create"/>
-                <button id="editBtn" action="clientsTable.edit"/>
-                <button id="removeBtn" action="clientsTable.remove"/>
+                <button id="createBtn" action="clientsTable.create" caption="msg://createBtn.caption"/>
+                <button id="editBtn" action="clientsTable.edit" caption="msg://editBtn.caption"/>
+                <button id="removeBtn" action="clientsTable.remove" caption="msg://removeBtn.caption"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

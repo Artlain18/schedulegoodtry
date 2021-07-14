@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://bankBrowse.caption"
         focusComponent="banksTable"
         messagesPack="com.company.schedulegoodtry.web.screens.bank">
@@ -29,27 +28,27 @@
         </filter>
         <groupTable id="banksTable"
                     width="100%"
-                    dataContainer="banksDc">
+                    dataContainer="banksDc" caption="msg://banksTable.caption">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="name"/>
-                <column id="clientList"/>
-                <column id="listCredit"/>
+                <column id="name" caption="msg://name.caption"/>
+                <column id="clientList" caption="msg://clientList.caption"/>
+                <column id="listCredit" caption="msg://listCredit.caption"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="banksTable.create"/>
-                <button id="editBtn" action="banksTable.edit"/>
-                <button id="removeBtn" action="banksTable.remove"/>
+                <button id="createBtn" action="banksTable.create" caption="msg://createBtn.caption"/>
+                <button id="editBtn" action="banksTable.edit" caption="msg://editBtn.caption"/>
+                <button id="removeBtn" action="banksTable.remove" caption="msg://removeBtn.caption"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
-            <button action="lookupSelectAction"/>
+            <button action="lookupSelectAction" caption="msg://button.caption"/>
             <button action="lookupCancelAction"/>
         </hbox>
     </layout>

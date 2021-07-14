@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://creditBrowse.caption"
         focusComponent="creditsTable"
         messagesPack="com.company.schedulegoodtry.web.screens.credit">
@@ -28,26 +27,26 @@
         </filter>
         <groupTable id="creditsTable"
                     width="100%"
-                    dataContainer="creditsDc">
+                    dataContainer="creditsDc" caption="msg://creditsTable.caption">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="nameCredit"/>
-                <column id="limitCredit"/>
-                <column id="percentCredit">
+                <column id="nameCredit" caption="msg://nameCredit.caption"/>
+                <column id="limitCredit" caption="msg://limitCredit.caption"/>
+                <column id="percentCredit" caption="msg://percentCredit.caption">
                     <formatter class="com.company.schedulegoodtry.entity.Credit$PercentFormatter"/>
                 </column>
-                <column id="bank"/>
+                <column id="bank" caption="msg://bank.caption"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="creditsTable.create"/>
-                <button id="editBtn" action="creditsTable.edit"/>
-                <button id="removeBtn" action="creditsTable.remove"/>
+                <button id="createBtn" action="creditsTable.create" caption="msg://createBtn.caption"/>
+                <button id="editBtn" action="creditsTable.edit" caption="msg://editBtn.caption"/>
+                <button id="removeBtn" action="creditsTable.remove" caption="msg://removeBtn.caption"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

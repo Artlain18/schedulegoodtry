@@ -20,28 +20,28 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="creditOfferDc">
+        <form id="form" dataContainer="creditOfferDc" caption="msg://form.caption">
             <column width="350px">
-                <pickerField id="clientField" property="client">
+                <pickerField id="clientField" property="client" caption="msg://clientField.caption">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
-                <pickerField id="creditField" property="credit">
+                <pickerField id="creditField" property="credit" caption="msg://creditField.caption">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
-                <textField id="sumCreditField" property="sumCredit"/>
-                <dateField id="startDateField" property="startDate"/>
-                <textField id="periodCreditField" property="periodCredit"/>
+                <textField id="sumCreditField" property="sumCredit" caption="msg://sumCreditField.caption"/>
+                <dateField id="startDateField" property="startDate" caption="msg://startDateField.caption"/>
+                <textField id="periodCreditField" property="periodCredit" caption="msg://periodCreditField.caption"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="commitAndCloseBtn" action="windowCommitAndClose" caption="msg://commitAndCloseBtn.caption"/>
+            <button id="closeBtn" action="windowClose" caption="msg://closeBtn.caption"/>
         </hbox>
     </layout>
 </window>

@@ -18,12 +18,12 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="bankDc">
             <column width="350px">
-                <textField id="nameField" property="name"/>
+                <textField id="nameField" property="name" caption="msg://nameField.caption"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="commitAndCloseBtn" action="windowCommitAndClose" caption="msg://commitAndCloseBtn.caption"/>
+            <button id="closeBtn" action="windowClose" caption="msg://closeBtn.caption"/>
         </hbox>
     </layout>
 </window>

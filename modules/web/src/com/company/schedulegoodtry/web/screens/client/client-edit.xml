@@ -15,13 +15,14 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="clientDc">
+        <form id="form" dataContainer="clientDc" caption="msg://form.caption">
             <column width="350px">
-                <textField id="fullNameField" property="fullName"/>
-                <textField id="phoneNumberField" property="phoneNumber"/>
-                <textField id="emailField" property="email"/>
-                <textField id="passportNumberField" property="passportNumber"/>
-                <pickerField id="bankField" property="bank">
+                <textField id="fullNameField" property="fullName" caption="msg://fullNameField.caption"/>
+                <textField id="phoneNumberField" property="phoneNumber" caption="msg://phoneNumberField.caption"/>
+                <textField id="emailField" property="email" caption="msg://emailField.caption"/>
+                <textField id="passportNumberField" property="passportNumber"
+                           caption="msg://passportNumberField.caption"/>
+                <pickerField id="bankField" property="bank" caption="msg://bankField.caption">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                         <action id="clear" type="picker_clear"/>
@@ -30,8 +31,8 @@
             </column>
         </form>
         <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="commitAndCloseBtn" action="windowCommitAndClose" caption="msg://commitAndCloseBtn.caption"/>
+            <button id="closeBtn" action="windowClose" caption="msg://closeBtn.caption"/>
         </hbox>
     </layout>
 </window>

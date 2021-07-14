@@ -15,12 +15,12 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="creditDc">
+        <form id="form" dataContainer="creditDc" caption="msg://form.caption">
             <column width="350px">
-                <textField id="nameCreditField" property="nameCredit"/>
-                <textField id="limitCreditField" property="limitCredit"/>
-                <textField id="percentCreditField" property="percentCredit"/>
-                <pickerField id="bankField" property="bank">
+                <textField id="nameCreditField" property="nameCredit" caption="msg://nameCreditField.caption"/>
+                <textField id="limitCreditField" property="limitCredit" caption="msg://limitCreditField.caption"/>
+                <textField id="percentCreditField" property="percentCredit" caption="msg://percentCreditField.caption"/>
+                <pickerField id="bankField" property="bank" caption="msg://bankField.caption">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                         <action id="clear" type="picker_clear"/>
@@ -29,8 +29,8 @@
             </column>
         </form>
         <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="commitAndCloseBtn" action="windowCommitAndClose" caption="msg://commitAndCloseBtn.caption"/>
+            <button id="closeBtn" action="windowClose" caption="msg://closeBtn.caption"/>
         </hbox>
     </layout>
 </window>

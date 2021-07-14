@@ -27,7 +27,7 @@
         </filter>
         <groupTable id="paymentsTable"
                     width="100%"
-                    dataContainer="paymentsDc">
+                    dataContainer="paymentsDc" caption="msg://paymentsTable.caption">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -35,19 +35,19 @@
             </actions>
             <columns>
                 <group>
-                    <column id="datePayment"/>
+                    <column id="datePayment" caption="msg://datePayment.caption"/>
                 </group>
-                <column id="sumPayment"/>
-                <column id="sumCreditPayment"/>
-                <column id="sumPercentPayment"/>
-                <column id="creditOffer"/>
+                <column id="sumPayment" caption="msg://sumPayment.caption"/>
+                <column id="sumCreditPayment" caption="msg://sumCreditPayment.caption"/>
+                <column id="sumPercentPayment" caption="msg://sumPercentPayment.caption"/>
+                <column id="creditOffer" caption="msg://creditOffer.caption"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="paymentsTable.create"/>
-                <button id="editBtn" action="paymentsTable.edit"/>
-                <button id="removeBtn" action="paymentsTable.remove"/>
+                <button id="createBtn" action="paymentsTable.create" caption="msg://createBtn.caption"/>
+                <button id="editBtn" action="paymentsTable.edit" caption="msg://editBtn.caption"/>
+                <button id="removeBtn" action="paymentsTable.remove" caption="msg://removeBtn.caption"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

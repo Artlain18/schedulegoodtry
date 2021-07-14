@@ -25,14 +25,14 @@
         </filter>
         <table id="paymentsTable"
                width="100%"
-               dataContainer="paymentsDc">
+               dataContainer="paymentsDc" caption="msg://paymentsTable.caption_1">
             <actions>
             </actions>
             <columns>
-                <column id="datePayment"/>
-                <column id="sumPayment"/>
-                <column id="sumCreditPayment"/>
-                <column id="sumPercentPayment"/>
+                <column id="datePayment" caption="msg://datePayment.caption_1"/>
+                <column id="sumPayment" caption="msg://sumPayment.caption_1"/>
+                <column id="sumCreditPayment" caption="msg://sumCreditPayment.caption_1"/>
+                <column id="sumPercentPayment" caption="msg://sumPercentPayment.caption_1"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
