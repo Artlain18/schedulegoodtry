@@ -20,7 +20,7 @@ public class Bank extends StandardEntity {
     private static final long serialVersionUID = -453180802500640729L;
 
     @NotNull
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "BANK_NAME", nullable = false, unique = true)
     private String name;
 
     @OnDeleteInverse(DeletePolicy.UNLINK)

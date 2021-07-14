@@ -60,19 +60,19 @@ create table SCHEDULEGOODTRY_CREDIT (
 )^
 -- end SCHEDULEGOODTRY_CREDIT
 -- begin SCHEDULEGOODTRY_BANK
-create table SCHEDULEGOODTRY_BANK (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
+create table SCHEDULEGOODTRY_BANK(
+                                     ID         varchar(36)  not null,
+                                     VERSION    integer      not null,
+                                     CREATE_TS  timestamp,
+                                     CREATED_BY varchar(50),
+                                     UPDATE_TS  timestamp,
+                                     UPDATED_BY varchar(50),
+                                     DELETE_TS  timestamp,
+                                     DELETED_BY varchar(50),
     --
-    NAME varchar(255) not null,
+                                     BANK_NAME  varchar(255) not null,
     --
-    primary key (ID)
+                                     primary key (ID)
 )^
 -- end SCHEDULEGOODTRY_BANK
 -- begin SCHEDULEGOODTRY_CREDIT_OFFER
