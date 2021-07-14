@@ -1,5 +1,6 @@
 package com.company.schedulegoodtry.service;
 
+import com.company.schedulegoodtry.entity.Credit;
 import com.company.schedulegoodtry.entity.CreditOffer;
 import com.company.schedulegoodtry.entity.Payment;
 import com.haulmont.cuba.core.global.DataManager;
@@ -48,7 +49,7 @@ public class CreditOfferServiceBean implements CreditOfferService {
             balanceCredit = balanceCredit.subtract(curPayment.getSumCreditPayment());
             curSumPercentPayment = balanceCredit.multiply(i);
             curSumCreditPayment = curPayment.getSumPayment().subtract(curSumPercentPayment);
-            curDate = curDate.plusDays(30);
+            curDate = curDate.plusMonths(1);
             curPayment.setSumPercentPayment(curSumPercentPayment);
             curPayment.setSumCreditPayment(curSumCreditPayment);
             curPayment.setDatePayment(curDate);
@@ -65,5 +66,10 @@ public class CreditOfferServiceBean implements CreditOfferService {
         List<Payment> payments = creditOffer.getListPayment();
         Collections.sort(payments);
         return payments;
+    }
+
+    @Override
+    public boolean checkLimit(BigDecimal sumCredit, Credit credit) {
+        return credit.getLimitCredit().compareTo(sumCredit) >= 0;
     }
 }

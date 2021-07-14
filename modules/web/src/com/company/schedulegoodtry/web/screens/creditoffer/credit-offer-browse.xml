@@ -23,41 +23,37 @@
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="creditOfferTabSheet"
-            spacing="true">
+    <layout
+            spacing="true" expand="creditOffersTable">
         <filter id="filter"
                 applyTo="creditOffersTable"
                 dataLoader="creditOffersDl">
             <properties include=".*"/>
         </filter>
-        <tabSheet id="creditOfferTabSheet">
-            <tab id="creditOfferTab" caption="msg://creditOfferTab.caption" expand="creditOffersTable">
-                <groupTable id="creditOffersTable"
-                            width="100%"
-                            dataContainer="creditOffersDc" caption="msg://creditOffersTable.caption">
-                    <actions>
-                        <action id="create" type="create"/>
-                        <action id="edit" type="edit"/>
-                        <action id="remove" type="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="client" caption="msg://client.caption"/>
-                        <column id="credit" caption="msg://credit.caption"/>
-                        <column id="sumCredit" caption="msg://sumCredit.caption"/>
-                        <column id="startDate" caption="msg://startDate.caption"/>
-                        <column id="periodCredit" caption="msg://periodCredit.caption"/>
-                    </columns>
-                    <rowsCount/>
-                    <buttonsPanel id="buttonsPanel"
-                                  alwaysVisible="true">
-                        <button id="createBtn" action="creditOffersTable.create" caption="msg://createBtn.caption"/>
-                        <button id="editBtn" action="creditOffersTable.edit" caption="msg://editBtn.caption"/>
-                        <button id="removeBtn" action="creditOffersTable.remove" caption="msg://removeBtn.caption"/>
-                        <button id="checkScheduleBtn" caption="msg://checkScheduleBtn.caption" visible="false"/>
-                    </buttonsPanel>
-                </groupTable>
-            </tab>
-        </tabSheet>
+        <groupTable id="creditOffersTable"
+                    width="100%"
+                    dataContainer="creditOffersDc" caption="msg://creditOffersTable.caption">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="client" caption="msg://client.caption"/>
+                <column id="credit" caption="msg://credit.caption"/>
+                <column id="sumCredit" caption="msg://sumCredit.caption"/>
+                <column id="startDate" caption="msg://startDate.caption"/>
+                <column id="periodCredit" caption="msg://periodCredit.caption"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="creditOffersTable.create" caption="msg://createBtn.caption"/>
+                <button id="editBtn" action="creditOffersTable.edit" caption="msg://editBtn.caption"/>
+                <button id="removeBtn" action="creditOffersTable.remove" caption="msg://removeBtn.caption"/>
+                <button id="checkScheduleBtn" caption="msg://checkScheduleBtn.caption" visible="false"/>
+            </buttonsPanel>
+        </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

@@ -11,7 +11,7 @@ import java.util.function.Function;
 
 @Table(name = "SCHEDULEGOODTRY_CREDIT")
 @Entity(name = "schedulegoodtry_Credit")
-@NamePattern("%s %s %s|nameCredit,limitCredit,percentCredit")
+@NamePattern("%s %s%%|nameCredit,percentCredit")
 public class Credit extends StandardEntity {
     private static final long serialVersionUID = 5099654559911535654L;
 
