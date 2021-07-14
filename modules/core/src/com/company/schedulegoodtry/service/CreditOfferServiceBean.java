@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service(CreditOfferService.NAME)
@@ -61,6 +62,8 @@ public class CreditOfferServiceBean implements CreditOfferService {
 
     @Override
     public List<Payment> watchSchedulePayments(CreditOffer creditOffer) {
-        return creditOffer.getListPayment();
+        List<Payment> payments = creditOffer.getListPayment();
+        Collections.sort(payments);
+        return payments;
     }
 }
