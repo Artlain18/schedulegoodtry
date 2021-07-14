@@ -34,7 +34,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="fullName" caption="msg://fullName.caption"/>
+                <column id="lastName" caption="msg://lastName.caption"/>
+                <column id="firstName" caption="msg://firstName.caption"/>
+                <column id="patronymic" caption="msg://patronymic.caption"/>
                 <column id="phoneNumber" caption="msg://phoneNumber.caption"/>
                 <column id="email" caption="msg://email.caption"/>
                 <column id="passportNumber" caption="msg://passportNumber.caption"/>

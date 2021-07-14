@@ -11,13 +11,21 @@ import javax.validation.constraints.Size;
 
 @Table(name = "SCHEDULEGOODTRY_CLIENT")
 @Entity(name = "schedulegoodtry_Client")
-@NamePattern("%s %s|fullName,email")
+@NamePattern("%s %s %s %s|lastName,firstName,patronymic,email")
 public class Client extends StandardEntity {
     private static final long serialVersionUID = 2967993644035618043L;
 
     @NotNull
-    @Column(name = "FULL_NAME", nullable = false)
-    private String fullName;
+    @Column(name = "LAST_NAME", nullable = false)
+    private String lastName;
+
+    @NotNull
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
+
+    @NotNull
+    @Column(name = "PATRONYMIC", nullable = false)
+    private String patronymic;
 
     @NotNull
     @Column(name = "PHONE_NUMBER", nullable = false, unique = true)
@@ -32,12 +40,28 @@ public class Client extends StandardEntity {
 
     @NotNull
     @Column(name = "PASSPORT_NUMBER", nullable = false, unique = true)
-    @Size(min = 6, max = 6)
+    @Size(min = 10, max = 10)
     private String passportNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BANK_ID")
     private Bank bank;
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     public Bank getBank() {
         return bank;
@@ -71,11 +95,11 @@ public class Client extends StandardEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

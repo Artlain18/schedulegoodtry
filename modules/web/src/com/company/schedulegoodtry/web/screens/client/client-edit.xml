@@ -17,7 +17,9 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="clientDc" caption="msg://form.caption">
             <column width="350px">
-                <textField id="fullNameField" property="fullName" caption="msg://fullNameField.caption"/>
+                <textField id="lastNameField" property="lastName" caption="msg://lastNameField.caption"/>
+                <textField id="firstNameField" caption="msg://firstNameField.caption" property="firstName"/>
+                <textField id="patronymicField" property="patronymic" caption="msg://patronymicField.caption"/>
                 <textField id="phoneNumberField" property="phoneNumber" caption="msg://phoneNumberField.caption"/>
                 <textField id="emailField" property="email" caption="msg://emailField.caption"/>
                 <textField id="passportNumberField" property="passportNumber"
