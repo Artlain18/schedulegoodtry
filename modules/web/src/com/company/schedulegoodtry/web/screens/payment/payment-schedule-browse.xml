@@ -23,13 +23,15 @@
                 dataLoader="paymentsDl">
             <properties include=".*"/>
         </filter>
-        <table id="paymentsTable"
-               width="100%"
-               dataContainer="paymentsDc" caption="msg://paymentsTable.caption_1">
+        <groupTable id="paymentsTable"
+                    width="100%"
+                    dataContainer="paymentsDc" caption="msg://paymentsTable.caption_1">
             <actions>
             </actions>
             <columns>
-                <column id="datePayment" caption="msg://datePayment.caption_1"/>
+                <group>
+                    <column id="datePayment" caption="msg://datePayment.caption_1"/>
+                </group>
                 <column id="sumPayment" caption="msg://sumPayment.caption_1"/>
                 <column id="sumCreditPayment" caption="msg://sumCreditPayment.caption_1"/>
                 <column id="sumPercentPayment" caption="msg://sumPercentPayment.caption_1"/>
@@ -38,6 +40,6 @@
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
             </buttonsPanel>
-        </table>
+        </groupTable>
     </layout>
 </window>

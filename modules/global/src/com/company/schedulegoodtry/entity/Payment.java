@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "SCHEDULEGOODTRY_PAYMENT")
 @Entity(name = "schedulegoodtry_Payment")
 @NamePattern("%s %s %s %s|datePayment,sumPayment,sumCreditPayment,sumPercentPayment")
-public class Payment extends StandardEntity {
+public class Payment extends StandardEntity implements Comparable<Payment> {
     private static final long serialVersionUID = -9179147032951807207L;
 
     @NotNull
@@ -76,5 +76,10 @@ public class Payment extends StandardEntity {
 
     public void setDatePayment(LocalDateTime datePayment) {
         this.datePayment = datePayment;
+    }
+
+    @Override
+    public int compareTo(Payment payment) {
+        return getDatePayment().compareTo(payment.getDatePayment());
     }
 }
