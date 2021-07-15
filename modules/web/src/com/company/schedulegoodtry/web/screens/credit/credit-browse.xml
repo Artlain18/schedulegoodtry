@@ -34,9 +34,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="nameCredit" caption="msg://nameCredit.caption"/>
-                <column id="limitCredit" caption="msg://limitCredit.caption"/>
-                <column id="percentCredit" caption="msg://percentCredit.caption">
+                <column id="creditName" caption="msg://nameCredit.caption"/>
+                <column id="creditLimit" caption="msg://limitCredit.caption"/>
+                <column id="creditPercent" caption="msg://percentCredit.caption">
                     <formatter class="com.company.schedulegoodtry.entity.Credit$PercentFormatter"/>
                 </column>
                 <column id="bank" caption="msg://bank.caption"/>

@@ -18,8 +18,8 @@ public class CreditOfferEdit extends StandardEditor<CreditOffer> {
 
     @Override
     protected void validateAdditionalRules(ValidationErrors errors) {
-        if (getEditedEntity().getSumCredit() != null && getEditedEntity().getCredit() != null) {
-            if (!(creditOfferService.checkLimit(getEditedEntity().getSumCredit(),
+        if (getEditedEntity().getCreditSum() != null && getEditedEntity().getCredit() != null) {
+            if (!(creditOfferService.checkLimit(getEditedEntity().getCreditSum(),
                     getEditedEntity().getCredit()
             ))) {
                 errors.add("Сумма кредита превышает лимит по выбранному кредиту");

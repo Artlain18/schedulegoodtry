@@ -28,7 +28,7 @@ public class CreditOfferServiceBean implements CreditOfferService {
         BigDecimal totalMonth = BigDecimal.valueOf(12);
         BigDecimal totalPercent = BigDecimal.valueOf(100);
         BigDecimal i = BigDecimal.valueOf(
-                creditOffer.getCredit().getPercentCredit()).divide(
+                creditOffer.getCredit().getCreditPercent()).divide(
                 (totalPercent.multiply(totalMonth)), MathContext.DECIMAL128
         );
         //P - monthly payment, S - sum of credit, n - period of credit, i - monthly percent rate, b - yearly percent rate
@@ -36,12 +36,12 @@ public class CreditOfferServiceBean implements CreditOfferService {
         //P = S * (i + i/[(1+i)^n - 1])
         //In - monthly sum of payment for percent of credit = Sn * i, where Sn - the balance of the loan debt
         //F = P - In, where F - monthly sum of payment for credit
-        BigDecimal curSumPayment = creditOffer.getSumCredit().multiply(i.add(i.divide(
+        BigDecimal curSumPayment = creditOffer.getCreditSum().multiply(i.add(i.divide(
                 (BigDecimal.valueOf(1).add(i)).pow(
-                        creditOffer.getPeriodCredit()).subtract(
+                        creditOffer.getCreditPeriod()).subtract(
                         BigDecimal.valueOf(1)), MathContext.DECIMAL128
         )));
-        BigDecimal balanceCredit = creditOffer.getSumCredit();
+        BigDecimal balanceCredit = creditOffer.getCreditSum();
         BigDecimal curSumPercentPayment = balanceCredit.multiply(i);
         BigDecimal curSumCreditPayment = curSumPayment.subtract(curSumPercentPayment);
         List<Payment> curPaymentList = new ArrayList<>();
@@ -52,36 +52,36 @@ public class CreditOfferServiceBean implements CreditOfferService {
         );
         firstPayment.setCreditOffer(creditOffer);
         curPaymentList.add(firstPayment);
-        for (int j = 1; j < creditOffer.getPeriodCredit(); j++) {
+        for (int j = 1; j < creditOffer.getCreditPeriod(); j++) {
             Payment curPayment = paymentService.createPayment(curDate,
                     curSumPayment,
                     curSumCreditPayment,
                     curSumPercentPayment
             );
-            balanceCredit = balanceCredit.subtract(curPayment.getSumCreditPayment());
+            balanceCredit = balanceCredit.subtract(curPayment.getPaymentCreditSum());
             curSumPercentPayment = balanceCredit.multiply(i);
-            curSumCreditPayment = curPayment.getSumPayment().subtract(curSumPercentPayment);
+            curSumCreditPayment = curPayment.getPaymentSum().subtract(curSumPercentPayment);
             curDate = curDate.plusMonths(1);
-            curPayment.setSumPercentPayment(curSumPercentPayment);
-            curPayment.setSumCreditPayment(curSumCreditPayment);
-            curPayment.setDatePayment(curDate);
+            curPayment.setPaymentPercentSum(curSumPercentPayment);
+            curPayment.setPaymentCreditSum(curSumCreditPayment);
+            curPayment.setPaymentDate(curDate);
             curPayment.setCreditOffer(creditOffer);
             curPaymentList.add(curPayment);
         }
-        creditOffer.setListPayment(curPaymentList);
+        creditOffer.setPaymentList(curPaymentList);
         dataManager.commit(creditOffer);
         return curPaymentList;
     }
 
     @Override
     public List<Payment> watchSchedulePayments(CreditOffer creditOffer) {
-        List<Payment> payments = creditOffer.getListPayment();
+        List<Payment> payments = creditOffer.getPaymentList();
         Collections.sort(payments);
         return payments;
     }
 
     @Override
     public boolean checkLimit(BigDecimal sumCredit, Credit credit) {
-        return credit.getLimitCredit().compareTo(sumCredit) >= 0;
+        return credit.getCreditLimit().compareTo(sumCredit) >= 0;
     }
 }

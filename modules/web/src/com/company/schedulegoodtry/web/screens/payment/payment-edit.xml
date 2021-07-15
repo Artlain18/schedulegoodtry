@@ -17,11 +17,11 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="paymentDc" caption="msg://form.caption">
             <column width="350px">
-                <dateField id="datePaymentField" property="datePayment" caption="msg://datePaymentField.caption"/>
-                <textField id="sumPaymentField" property="sumPayment" caption="msg://sumPaymentField.caption"/>
-                <textField id="sumCreditPaymentField" property="sumCreditPayment"
+                <dateField id="datePaymentField" property="paymentDate" caption="msg://datePaymentField.caption"/>
+                <textField id="sumPaymentField" property="paymentSum" caption="msg://sumPaymentField.caption"/>
+                <textField id="sumCreditPaymentField" property="paymentCreditSum"
                            caption="msg://sumCreditPaymentField.caption"/>
-                <textField id="sumPercentPaymentField" property="sumPercentPayment"
+                <textField id="sumPercentPaymentField" property="paymentPercentSum"
                            caption="msg://sumPercentPaymentField.caption"/>
                 <pickerField id="creditOfferField" property="creditOffer" caption="msg://creditOfferField.caption">
                     <actions>

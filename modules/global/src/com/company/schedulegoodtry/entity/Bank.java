@@ -31,14 +31,14 @@ public class Bank extends StandardEntity {
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "bank")
-    private List<Credit> listCredit;
+    private List<Credit> creditList;
 
-    public List<Credit> getListCredit() {
-        return listCredit;
+    public List<Credit> getCreditList() {
+        return creditList;
     }
 
-    public void setListCredit(List<Credit> listCredit) {
-        this.listCredit = listCredit;
+    public void setCreditList(List<Credit> creditList) {
+        this.creditList = creditList;
     }
 
     public List<Client> getClientList() {

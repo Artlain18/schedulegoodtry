@@ -17,9 +17,9 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="creditDc" caption="msg://form.caption">
             <column width="350px">
-                <textField id="nameCreditField" property="nameCredit" caption="msg://nameCreditField.caption"/>
-                <textField id="limitCreditField" property="limitCredit" caption="msg://limitCreditField.caption"/>
-                <textField id="percentCreditField" property="percentCredit" caption="msg://percentCreditField.caption"/>
+                <textField id="nameCreditField" property="creditName" caption="msg://nameCreditField.caption"/>
+                <textField id="limitCreditField" property="creditLimit" caption="msg://limitCreditField.caption"/>
+                <textField id="percentCreditField" property="creditPercent" caption="msg://percentCreditField.caption"/>
                 <pickerField id="bankField" property="bank" caption="msg://bankField.caption">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>

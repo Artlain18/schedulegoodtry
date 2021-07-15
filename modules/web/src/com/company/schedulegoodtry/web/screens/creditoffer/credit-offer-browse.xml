@@ -9,9 +9,9 @@
             <view extends="_local">
                 <property name="client" view="_minimal"/>
                 <property name="credit" view="_minimal"/>
-                <property name="listPayment" view="_minimal">
-                    <property name="sumCreditPayment"/>
-                    <property name="sumPercentPayment"/>
+                <property name="paymentList" view="_minimal">
+                    <property name="paymentCreditSum"/>
+                    <property name="paymentPercentSum"/>
                 </property>
             </view>
             <loader id="creditOffersDl">
@@ -41,9 +41,9 @@
             <columns>
                 <column id="client" caption="msg://client.caption"/>
                 <column id="credit" caption="msg://credit.caption"/>
-                <column id="sumCredit" caption="msg://sumCredit.caption"/>
+                <column id="creditSum" caption="msg://sumCredit.caption"/>
                 <column id="startDate" caption="msg://startDate.caption"/>
-                <column id="periodCredit" caption="msg://periodCredit.caption"/>
+                <column id="creditPeriod" caption="msg://periodCredit.caption"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

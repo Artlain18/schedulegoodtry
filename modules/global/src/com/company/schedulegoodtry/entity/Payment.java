@@ -11,28 +11,28 @@ import java.time.LocalDateTime;
 
 @Table(name = "SCHEDULEGOODTRY_PAYMENT")
 @Entity(name = "schedulegoodtry_Payment")
-@NamePattern("%s %s %s %s|datePayment,sumPayment,sumCreditPayment,sumPercentPayment")
+@NamePattern("%s %s %s %s|paymentDate,paymentSum,paymentCreditSum,paymentPercentSum")
 public class Payment extends StandardEntity implements Comparable<Payment> {
     private static final long serialVersionUID = -9179147032951807207L;
 
     @NotNull
     @Column(name = "DATE_PAYMENT", nullable = false)
-    private LocalDateTime datePayment;
+    private LocalDateTime paymentDate;
 
     @NotNull
     @Column(name = "SUM_PAYMENT", nullable = false)
     @Positive
-    private BigDecimal sumPayment;
+    private BigDecimal paymentSum;
 
     @NotNull
     @Column(name = "SUM_CREDIT_PAYMENT", nullable = false)
     @Positive
-    private BigDecimal sumCreditPayment;
+    private BigDecimal paymentCreditSum;
 
     @NotNull
     @Column(name = "SUM_PERCENT_PAYMENT", nullable = false)
     @Positive
-    private BigDecimal sumPercentPayment;
+    private BigDecimal paymentPercentSum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CREDIT_OFFER_ID")
@@ -46,40 +46,40 @@ public class Payment extends StandardEntity implements Comparable<Payment> {
         this.creditOffer = creditOffer;
     }
 
-    public BigDecimal getSumPercentPayment() {
-        return sumPercentPayment;
+    public BigDecimal getPaymentPercentSum() {
+        return paymentPercentSum;
     }
 
-    public void setSumPercentPayment(BigDecimal sumPercentPayment) {
-        this.sumPercentPayment = sumPercentPayment;
+    public void setPaymentPercentSum(BigDecimal paymentPercentSum) {
+        this.paymentPercentSum = paymentPercentSum;
     }
 
-    public BigDecimal getSumCreditPayment() {
-        return sumCreditPayment;
+    public BigDecimal getPaymentCreditSum() {
+        return paymentCreditSum;
     }
 
-    public void setSumCreditPayment(BigDecimal sumCreditPayment) {
-        this.sumCreditPayment = sumCreditPayment;
+    public void setPaymentCreditSum(BigDecimal paymentCreditSum) {
+        this.paymentCreditSum = paymentCreditSum;
     }
 
-    public BigDecimal getSumPayment() {
-        return sumPayment;
+    public BigDecimal getPaymentSum() {
+        return paymentSum;
     }
 
-    public void setSumPayment(BigDecimal sumPayment) {
-        this.sumPayment = sumPayment;
+    public void setPaymentSum(BigDecimal paymentSum) {
+        this.paymentSum = paymentSum;
     }
 
-    public LocalDateTime getDatePayment() {
-        return datePayment;
+    public LocalDateTime getPaymentDate() {
+        return paymentDate;
     }
 
-    public void setDatePayment(LocalDateTime datePayment) {
-        this.datePayment = datePayment;
+    public void setPaymentDate(LocalDateTime paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     @Override
     public int compareTo(Payment payment) {
-        return getDatePayment().compareTo(payment.getDatePayment());
+        return getPaymentDate().compareTo(payment.getPaymentDate());
     }
 }

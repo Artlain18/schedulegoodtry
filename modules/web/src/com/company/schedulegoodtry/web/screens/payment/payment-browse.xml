@@ -35,11 +35,11 @@
             </actions>
             <columns>
                 <group>
-                    <column id="datePayment" caption="msg://datePayment.caption"/>
+                    <column id="paymentDate" caption="msg://datePayment.caption"/>
                 </group>
-                <column id="sumPayment" caption="msg://sumPayment.caption"/>
-                <column id="sumCreditPayment" caption="msg://sumCreditPayment.caption"/>
-                <column id="sumPercentPayment" caption="msg://sumPercentPayment.caption"/>
+                <column id="paymentSum" caption="msg://sumPayment.caption"/>
+                <column id="paymentCreditSum" caption="msg://sumCreditPayment.caption"/>
+                <column id="paymentPercentSum" caption="msg://sumPercentPayment.caption"/>
                 <column id="creditOffer" caption="msg://creditOffer.caption"/>
             </columns>
             <rowsCount/>

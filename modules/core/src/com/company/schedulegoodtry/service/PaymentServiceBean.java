@@ -21,10 +21,10 @@ public class PaymentServiceBean implements PaymentService {
                                  BigDecimal setSumPercentPayment
     ) {
         Payment payment = dataManager.create(Payment.class);
-        payment.setDatePayment(setTime);
-        payment.setSumPayment(setSumPayment);
-        payment.setSumPercentPayment(setSumPercentPayment);
-        payment.setSumCreditPayment(setSumCreditPayment);
+        payment.setPaymentDate(setTime);
+        payment.setPaymentSum(setSumPayment);
+        payment.setPaymentPercentSum(setSumPercentPayment);
+        payment.setPaymentCreditSum(setSumCreditPayment);
         return payment;
     }
 }

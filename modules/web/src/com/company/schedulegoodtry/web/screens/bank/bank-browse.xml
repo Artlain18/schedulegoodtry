@@ -8,7 +8,7 @@
                     class="com.company.schedulegoodtry.entity.Bank">
             <view extends="_local">
                 <property name="clientList" view="_minimal"/>
-                <property name="listCredit" view="_minimal"/>
+                <property name="creditList" view="_minimal"/>
             </view>
             <loader id="banksDl">
                 <query>
@@ -37,7 +37,7 @@
             <columns>
                 <column id="name" caption="msg://name.caption"/>
                 <column id="clientList" caption="msg://clientList.caption"/>
-                <column id="listCredit" caption="msg://listCredit.caption"/>
+                <column id="creditList" caption="msg://listCredit.caption"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

@@ -8,7 +8,7 @@
                   class="com.company.schedulegoodtry.entity.Bank">
             <view extends="_local">
                 <property name="clientList" view="_minimal"/>
-                <property name="listCredit" view="_minimal"/>
+                <property name="creditList" view="_minimal"/>
             </view>
             <loader/>
         </instance>

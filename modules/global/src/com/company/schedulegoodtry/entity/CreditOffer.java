@@ -17,7 +17,7 @@ import java.util.List;
 
 @Table(name = "SCHEDULEGOODTRY_CREDIT_OFFER")
 @Entity(name = "schedulegoodtry_CreditOffer")
-@NamePattern("%s %s %s %s %s %s|client,credit,sumCredit,periodCredit,startDate,listPayment")
+@NamePattern("%s %s %s %s %s %s|client,credit,creditSum,creditPeriod,startDate,paymentList")
 public class CreditOffer extends StandardEntity {
     private static final long serialVersionUID = -2100148096608285827L;
 
@@ -36,7 +36,7 @@ public class CreditOffer extends StandardEntity {
     @NotNull
     @Column(name = "SUM_CREDIT", nullable = false)
     @Positive
-    private BigDecimal sumCredit;
+    private BigDecimal creditSum;
 
     @NotNull
     @Column(name = "START_DATE", nullable = false)
@@ -47,27 +47,27 @@ public class CreditOffer extends StandardEntity {
     @Positive
     @Min(1)
     @Max(36)
-    private Integer periodCredit;
+    private Integer creditPeriod;
 
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "creditOffer")
-    private List<Payment> listPayment;
+    private List<Payment> paymentList;
 
-    public List<Payment> getListPayment() {
-        return listPayment;
+    public List<Payment> getPaymentList() {
+        return paymentList;
     }
 
-    public void setListPayment(List<Payment> listPayment) {
-        this.listPayment = listPayment;
+    public void setPaymentList(List<Payment> paymentList) {
+        this.paymentList = paymentList;
     }
 
-    public Integer getPeriodCredit() {
-        return periodCredit;
+    public Integer getCreditPeriod() {
+        return creditPeriod;
     }
 
-    public void setPeriodCredit(Integer periodCredit) {
-        this.periodCredit = periodCredit;
+    public void setCreditPeriod(Integer creditPeriod) {
+        this.creditPeriod = creditPeriod;
     }
 
     public LocalDateTime getStartDate() {
@@ -78,12 +78,12 @@ public class CreditOffer extends StandardEntity {
         this.startDate = startDate;
     }
 
-    public BigDecimal getSumCredit() {
-        return sumCredit;
+    public BigDecimal getCreditSum() {
+        return creditSum;
     }
 
-    public void setSumCredit(BigDecimal sumCredit) {
-        this.sumCredit = sumCredit;
+    public void setCreditSum(BigDecimal creditSum) {
+        this.creditSum = creditSum;
     }
 
     public Credit getCredit() {

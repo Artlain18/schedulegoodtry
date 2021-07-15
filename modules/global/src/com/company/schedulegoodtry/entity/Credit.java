@@ -11,23 +11,23 @@ import java.util.function.Function;
 
 @Table(name = "SCHEDULEGOODTRY_CREDIT")
 @Entity(name = "schedulegoodtry_Credit")
-@NamePattern("%s %s%%|nameCredit,percentCredit")
+@NamePattern("%s %s%%|creditName,creditPercent")
 public class Credit extends StandardEntity {
     private static final long serialVersionUID = 5099654559911535654L;
 
     @NotNull
     @Column(name = "NAME_CREDIT", nullable = false, unique = true)
-    private String nameCredit;
+    private String creditName;
 
     @NotNull
     @Column(name = "LIMIT_CREDIT", nullable = false)
     @Positive
-    private BigDecimal limitCredit;
+    private BigDecimal creditLimit;
 
     @NotNull
     @Column(name = "PERCENT_CREDIT", nullable = false)
     @Positive
-    private Double percentCredit;
+    private Double creditPercent;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BANK_ID")
@@ -41,28 +41,28 @@ public class Credit extends StandardEntity {
         this.bank = bank;
     }
 
-    public Double getPercentCredit() {
-        return percentCredit;
+    public Double getCreditPercent() {
+        return creditPercent;
     }
 
-    public void setPercentCredit(Double percentCredit) {
-        this.percentCredit = percentCredit;
+    public void setCreditPercent(Double creditPercent) {
+        this.creditPercent = creditPercent;
     }
 
-    public BigDecimal getLimitCredit() {
-        return limitCredit;
+    public BigDecimal getCreditLimit() {
+        return creditLimit;
     }
 
-    public void setLimitCredit(BigDecimal limitCredit) {
-        this.limitCredit = limitCredit;
+    public void setCreditLimit(BigDecimal creditLimit) {
+        this.creditLimit = creditLimit;
     }
 
-    public String getNameCredit() {
-        return nameCredit;
+    public String getCreditName() {
+        return creditName;
     }
 
-    public void setNameCredit(String nameCredit) {
-        this.nameCredit = nameCredit;
+    public void setCreditName(String creditName) {
+        this.creditName = creditName;
     }
 
     public static class PercentFormatter implements Function<Double, String> {

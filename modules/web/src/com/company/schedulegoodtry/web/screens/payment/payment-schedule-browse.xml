@@ -29,10 +29,10 @@
             <actions>
             </actions>
             <columns>
-                <column id="datePayment" caption="msg://datePayment.caption_1"/>
-                <column id="sumPayment" caption="msg://sumPayment.caption_1"/>
-                <column id="sumCreditPayment" caption="msg://sumCreditPayment.caption_1"/>
-                <column id="sumPercentPayment" caption="msg://sumPercentPayment.caption_1"/>
+                <column id="paymentDate" caption="msg://datePayment.caption_1"/>
+                <column id="paymentSum" caption="msg://sumPayment.caption_1"/>
+                <column id="paymentCreditSum" caption="msg://sumCreditPayment.caption_1"/>
+                <column id="paymentPercentSum" caption="msg://sumPercentPayment.caption_1"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
