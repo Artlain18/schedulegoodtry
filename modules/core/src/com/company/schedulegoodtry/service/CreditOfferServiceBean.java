@@ -32,7 +32,10 @@ public class CreditOfferServiceBean implements CreditOfferService {
     @Override
     public List<Payment> calculateSchedulePayments(CreditOffer creditOffer) {
         LocalDateTime curDate = creditOffer.getStartDate();
-        BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(BigDecimal.valueOf(1200), MathContext.DECIMAL128);
+        //месячная процентная ставка (мпс) вычисляется по формуле: годовой процент/(100 * 12)
+        BigDecimal divMonthPercentRate = BigDecimal.valueOf(1200);// это величина (100*12)
+        BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(divMonthPercentRate, MathContext.DECIMAL128);//месячная процентная ставка
+        //ежемесячный платёж вычисляется по формуле: остаток кредита * (мпс + мпс/((1+мпс)^(количество месяцев)-1)
         BigDecimal curSumPayment = creditOffer.getSumCredit().multiply(i.add(i.divide(
                 (BigDecimal.valueOf(1).add(i)).pow(creditOffer.getPeriodCredit()).subtract(BigDecimal.valueOf(1)),
                 MathContext.DECIMAL128
