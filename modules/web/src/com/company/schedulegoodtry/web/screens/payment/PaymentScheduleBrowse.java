@@ -24,7 +24,8 @@ public class PaymentScheduleBrowse extends Screen {
     public void setPayment(List<Payment> payments) {
         @SuppressWarnings("unchecked")
         Table<Payment> paymentsTable = (Table<Payment>) getWindow().getComponentNN("paymentsTable");
-        CollectionContainer<Payment> collection = new CollectionContainerImpl<>(metadata.getClassNN(Payment.class));
+        CollectionContainer<Payment> collection =
+                new CollectionContainerImpl<>(metadata.getClassNN(Payment.class));
         TableItems<Payment> tableItems = new ContainerTableItems<>(collection);
         paymentsTable.setItems(tableItems);
         collection.setItems(payments);

@@ -8,5 +8,9 @@ import java.time.LocalDateTime;
 public interface PaymentService {
     String NAME = "schedulegoodtry_PaymentService";
 
-    Payment createPayment(LocalDateTime setTime, BigDecimal setSumPayment, BigDecimal setSumCreditPayment, BigDecimal setSumPercentPayment);
+    Payment createPayment(LocalDateTime setTime,
+                          BigDecimal setSumPayment,
+                          BigDecimal setSumCreditPayment,
+                          BigDecimal setSumPercentPayment
+    );
 }

@@ -19,7 +19,6 @@ import java.util.List;
 public class CreditOfferBrowse extends StandardLookup<CreditOffer> {
     @Inject
     private CreditOfferService creditOfferService;
-
     @Inject
     private Screens screens;
 
