@@ -32,17 +32,21 @@ public class CreditOfferServiceBean implements CreditOfferService {
     @Override
     public List<Payment> calculateSchedulePayments(CreditOffer creditOffer) {
         LocalDateTime curDate = creditOffer.getStartDate();
-        //месячная процентная ставка (мпс) вычисляется по формуле: годовой процент/(100 * 12)
-        BigDecimal divMonthPercentRate = BigDecimal.valueOf(1200);// это величина (100*12)
-        BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide(divMonthPercentRate, MathContext.DECIMAL128);//месячная процентная ставка
-        //ежемесячный платёж вычисляется по формуле: остаток кредита * (мпс + мпс/((1+мпс)^(количество месяцев)-1)
+        BigDecimal totalMonth = BigDecimal.valueOf(12);
+        BigDecimal totalPercent = BigDecimal.valueOf(100);
+        BigDecimal i = BigDecimal.valueOf(creditOffer.getCredit().getPercentCredit()).divide((totalPercent.multiply(totalMonth)), MathContext.DECIMAL128);
+        //P - monthly payment, S - sum of credit, n - period of credit, i - monthly percent rate, b - yearly percent rate
+        // i = b/(100*12) where 100 - totalPercent, 12 - totalMonth
+        //P = S * (i + i/[(1+i)^n - 1])
+        //In - monthly sum of payment for percent of credit = Sn * i, where Sn - the balance of the loan debt
+        //F = P - In, where F - monthly sum of payment for credit
         BigDecimal curSumPayment = creditOffer.getSumCredit().multiply(i.add(i.divide(
                 (BigDecimal.valueOf(1).add(i)).pow(creditOffer.getPeriodCredit()).subtract(BigDecimal.valueOf(1)),
                 MathContext.DECIMAL128
         )));
         BigDecimal balanceCredit = creditOffer.getSumCredit();
-        BigDecimal curSumPercentPayment = balanceCredit.multiply(i); //погашение процента
-        BigDecimal curSumCreditPayment = curSumPayment.subtract(curSumPercentPayment); // погашение кредита
+        BigDecimal curSumPercentPayment = balanceCredit.multiply(i);
+        BigDecimal curSumCreditPayment = curSumPayment.subtract(curSumPercentPayment);
         List<Payment> curPaymentList = new ArrayList<>();
         Payment firstPayment = paymentService.createPayment(curDate, curSumPayment, curSumCreditPayment, curSumPercentPayment);
         firstPayment.setCreditOffer(creditOffer);

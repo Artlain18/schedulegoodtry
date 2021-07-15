@@ -2,7 +2,6 @@ package com.company.schedulegoodtry.web.screens.creditoffer;
 
 import com.company.schedulegoodtry.entity.CreditOffer;
 import com.company.schedulegoodtry.service.CreditOfferService;
-import com.haulmont.cuba.gui.components.Action;
 import com.haulmont.cuba.gui.components.ValidationErrors;
 import com.haulmont.cuba.gui.screen.*;
 
@@ -21,14 +20,9 @@ public class CreditOfferEdit extends StandardEditor<CreditOffer> {
     protected void validateAdditionalRules(ValidationErrors errors) {
         if (getEditedEntity().getSumCredit() != null && getEditedEntity().getCredit() != null) {
             if (!(creditOfferService.checkLimit(getEditedEntity().getSumCredit(), getEditedEntity().getCredit()))) {
-                errors.add("Сумма кредит превышает лимит по выбранному кредиту");
+                errors.add("Сумма кредита превышает лимит по выбранному кредиту");
             }
         }
         super.validateAdditionalRules(errors);
-    }
-
-    @Override
-    protected void commit(Action.ActionPerformedEvent event) {
-        super.commit(event);
     }
 }

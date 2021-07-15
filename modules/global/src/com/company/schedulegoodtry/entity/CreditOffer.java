@@ -46,7 +46,7 @@ public class CreditOffer extends StandardEntity {
     @Column(name = "PERIOD_CREDIT", nullable = false)
     @Positive
     @Min(1)
-    @Max(12)
+    @Max(36)
     private Integer periodCredit;
 
     @OnDeleteInverse(DeletePolicy.UNLINK)

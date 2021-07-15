@@ -4,7 +4,7 @@ import com.company.schedulegoodtry.entity.Payment;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.cuba.gui.components.data.TableItems;
-import com.haulmont.cuba.gui.components.data.table.ContainerGroupTableItems;
+import com.haulmont.cuba.gui.components.data.table.ContainerTableItems;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.impl.CollectionContainerImpl;
 import com.haulmont.cuba.gui.screen.Screen;
@@ -25,7 +25,7 @@ public class PaymentScheduleBrowse extends Screen {
         @SuppressWarnings("unchecked")
         Table<Payment> paymentsTable = (Table<Payment>) getWindow().getComponentNN("paymentsTable");
         CollectionContainer<Payment> collection = new CollectionContainerImpl<>(metadata.getClassNN(Payment.class));
-        TableItems<Payment> tableItems = new ContainerGroupTableItems<>(collection);
+        TableItems<Payment> tableItems = new ContainerTableItems<>(collection);
         paymentsTable.setItems(tableItems);
         collection.setItems(payments);
     }
